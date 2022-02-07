@@ -1,5 +1,5 @@
 [package]
-name = "orders_rust"
+name = "accounting_system"
 version = "0.1.0"
 edition = "2021"
 authors = ["Zhuravlev Maksim <monge.gaspard.1746@gmail.com>"]
@@ -14,3 +14,4 @@ homepage = "https://github.com/zhuravlevma"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+base64 = "0.13.0"
