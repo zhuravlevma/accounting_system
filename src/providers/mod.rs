@@ -1,20 +1,20 @@
-pub use belarus::{belarus_factory, BelarusMilk, BelarusMilkFactory, BelarusProvider};
-pub use russia::{russia_factory, Gasprom, RussiaProvider, RussianGas};
+pub use belarus::{belarus_factory, BelarusMilk, BelarusMilkFactory, BelarusResponsible};
+pub use russia::{russia_factory, Gasprom, RussiaResponsible, RussianGas};
 
 pub trait Product {
     fn get_price(&self) -> f64;
 }
 
-pub trait Provider {
+pub trait Responsible {
     fn get_info(&self) -> String;
 }
 
 pub trait ProductCreator {
     type Product: Product;
-    type Provider: Provider;
+    type Responsible: Responsible;
 
     fn create_product(&self) -> Self::Product;
-    fn create_provider(&self) -> Self::Provider;
+    fn create_responsible(&self) -> Self::Responsible;
 }
 
 pub mod belarus;

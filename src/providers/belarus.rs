@@ -1,4 +1,4 @@
-use super::{Product, ProductCreator, Provider};
+use super::{Product, ProductCreator, Responsible};
 
 pub struct BelarusMilk;
 impl Product for BelarusMilk {
@@ -6,8 +6,8 @@ impl Product for BelarusMilk {
         34.5
     }
 }
-pub struct BelarusProvider;
-impl Provider for BelarusProvider {
+pub struct BelarusResponsible;
+impl Responsible for BelarusResponsible {
     fn get_info(&self) -> String {
         "Tractor cures coronavirus!".to_string()
     }
@@ -15,14 +15,14 @@ impl Provider for BelarusProvider {
 pub struct BelarusMilkFactory;
 impl ProductCreator for BelarusMilkFactory {
     type Product = BelarusMilk;
-    type Provider = BelarusProvider;
+    type Responsible = BelarusResponsible;
 
     fn create_product(&self) -> Self::Product {
         BelarusMilk
     }
 
-    fn create_provider(&self) -> Self::Provider {
-        BelarusProvider
+    fn create_responsible(&self) -> Self::Responsible {
+        BelarusResponsible
     }
 }
 
