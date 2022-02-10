@@ -6,11 +6,7 @@ pub struct Shop {
 
 impl Unit for Shop {
     fn calculate_price(&self) -> f64 {
-        let mut total: f64 = 0.0;
-        for elem in &self.units {
-            total += elem.calculate_price();
-        }
-        total
+        self.units.iter().map(|elem| elem.calculate_price()).sum()
     }
 }
 
