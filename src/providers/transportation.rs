@@ -1,6 +1,8 @@
-use crate::providers::{BelarusMilk, BelarusMilkFactory, Gasprom, Product, ProductCreator, Responsible, RussianGas};
 use crate::providers::belarus::{FileCriminalCase, KGB};
 use crate::providers::russia::{Miller, StealALotOfMoney};
+use crate::providers::{
+    BelarusMilk, BelarusMilkFactory, Gasprom, Product, ProductCreator, Responsible, RussianGas,
+};
 
 pub trait Transportation {
     type Creator: ProductCreator;

@@ -1,5 +1,8 @@
+use accounting_system::providers::transportation::{
+    BelarusTransportation, DynBelarusTransportation, DynRussianTransportation,
+    RussianTransportation,
+};
 use accounting_system::providers::{BelarusMilkFactory, Gasprom, ProductCreator};
-use accounting_system::providers::transportation::{BelarusTransportation, DynBelarusTransportation, DynRussianTransportation, RussianTransportation};
 use accounting_system::{Unit, Warehouse};
 
 fn main() {

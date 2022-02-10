@@ -1,7 +1,9 @@
-use crate::providers::{BelarusMilkFactory, Gasprom, Product};
-use crate::providers::transportation::{BelarusTransportation, DynTransportation, RussianTransportation, Transportation};
-use crate::{Unit};
 use crate::accounting::product::Product as DomainProduct;
+use crate::providers::transportation::{
+    BelarusTransportation, DynTransportation, RussianTransportation, Transportation,
+};
+use crate::providers::{BelarusMilkFactory, Gasprom, Product};
+use crate::Unit;
 pub struct Warehouse {
     units: Vec<Box<dyn Unit>>,
 }
@@ -17,16 +19,20 @@ impl Warehouse {
         self.units.push(unit);
     }
     pub fn buy_gas(&mut self, transportation: RussianTransportation, factory: Gasprom) {
-        let product= transportation.transport(factory);
+        let product = transportation.transport(factory);
         let unit = DomainProduct::new(product.get_price(), 20.0);
         self.units.push(Box::new(unit));
     }
     pub fn buy_milk(&mut self, transportation: BelarusTransportation, factory: BelarusMilkFactory) {
-        let product= transportation.transport(factory);
+        let product = transportation.transport(factory);
         let unit = DomainProduct::new(product.get_price(), 20.0);
         self.units.push(Box::new(unit));
     }
-    pub fn buy_product_from_stock(&mut self, transportation: Box<dyn DynTransportation>, product: Box<dyn Product>) {
+    pub fn buy_product_from_stock(
+        &mut self,
+        transportation: Box<dyn DynTransportation>,
+        product: Box<dyn Product>,
+    ) {
         let product = transportation.transport(product);
         let unit = DomainProduct::new(product.get_price(), 20.0);
         self.units.push(Box::new(unit));
