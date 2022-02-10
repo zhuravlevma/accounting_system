@@ -14,7 +14,11 @@ pub trait ProductCreator {
     type Responsible: Responsible;
 
     fn create_product(&self) -> Self::Product;
-    fn create_responsible(&self) -> Self::Responsible;
+    fn create_responsible(&self, name: &str) -> Self::Responsible;
+}
+
+pub trait Command {
+    fn execute(&self) -> &str;
 }
 
 pub mod belarus;
